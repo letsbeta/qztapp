@@ -4,6 +4,7 @@ import { Container, Header, Footer, FooterTab, Button, Icon, Text, Badge, Left, 
 
 import JobsList from './JobsList';
 import PersonList from './PersonList';
+import CompanyList from './CompanyList';
 import renderIf from './utils';
 import config from '../config.json';
 
@@ -82,6 +83,7 @@ export default class MainScreen extends Component {
         <View style={{ flex: 1 }}>
           { renderIf(this.state.tab1, <JobsList />) }
           { renderIf(this.state.tab2, <PersonList />) }
+          { renderIf(this.state.tab3, <CompanyList />) }
         </View>
         <Footer>
           <FooterTab>

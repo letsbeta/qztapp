@@ -42,7 +42,7 @@ export default class JobsList extends Component {
     _renderItem({item, index}) {
         return (
             <ListItem>
-              <Thumbnail square large source={ { uri: 'https://facebook.github.io/react/img/logo_og.png' } } />
+              <Thumbnail square large source={ { uri: 'https://qzt.letsbeta.com/static/ydlogo.jpg' } } />
               <Body>
                 <Text style={ styles.jobtitle }>
                   安镇雅迪喷漆工
