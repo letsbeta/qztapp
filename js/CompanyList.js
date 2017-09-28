@@ -7,6 +7,10 @@ import {
   Dimensions,
 } from 'react-native'
 import Swiper from 'react-native-swiper'
+import config from '../config.json';
+
+const { width, height } = Dimensions.get('window');
+const equalWidth =  (width / 2 )
 
 const styles = {
   swipercontainer: {
@@ -18,44 +22,76 @@ const styles = {
     alignItems: 'center',
     backgroundColor: '#9DD6EB'
   },
-  text: {
-    color: '#fff',
-    fontSize: 30,
-    fontWeight: 'bold'
+  logocontainer: {
+    borderColor: '#DDDDDD',
+    borderBottomWidth: 0.5,
+    borderRightWidth: 0.5
+  },
+  logoimg: {
+    height: equalWidth,
+    width : equalWidth
+  },
+  vipimg: {
+      position: 'absolute',
+      left: 0,
+      top: 0,
+      height: 40,
+      width: 40
+  },
+  companyname: {
+      textAlign: 'center',
+      fontSize: 16,
+      fontWeight: 'bold',
+      backgroundColor: '#99CCFF',
+      color: 'white'
   }
 }
-
-const { width, height } = Dimensions.get('window');
-
-const equalWidth =  (width / 2 )
 
 export default class CompanyList extends Component {
   constructor (props) {
     super(props)
     this.state = {
       items: [],
-      data: [{'id': 1}, {'id': 2}, {'id': 3}]
+      data: [{'id': 1, 'vip': 3}, {'id': 2, 'vip': 2}, {'id': 3, 'vip': 1}, {'id': 4, 'vip': 0}]
     }
   }
   
   componentDidMount () {
     this.setState({
       items: [
-        { title: 'Hello Swiper', img: 'https://qzt.letsbeta.com/static/yadibanner.jpg' },
-        { title: 'Beautiful', img: 'https://qzt.letsbeta.com/static/xinribanner.jpg' },
-        { title: 'And simple', img: 'https://qzt.letsbeta.com/static/aimabanner.jpg' }
+        { title: 'Hello Swiper', img: config.endpoint+'static/banner/yadibanner.jpg' },
+        { title: 'Beautiful', img: config.endpoint+'static/banner/xinribanner.jpg' },
+        { title: 'And simple', img: config.endpoint+'static/banner/aimabanner.jpg' }
       ]
     });
   }
 
   _keyExtractor = (item, index) => item.id;
+
+  _getVipImage(level) {
+    if (level == 0) {
+        vip = 'static/vip/ptvip.png';
+    }
+    else if (level == 1) {
+        vip = 'static/vip/hjvip.png';
+    }
+    else if (level == 2) {
+        vip = 'static/vip/bjvip.png';
+    }
+    else if (level == 3) {
+        vip = 'static/vip/zsvip.png';
+    }
+    return config.endpoint + vip;
+  }
   
-    renderRowItem = (itemData) => {
-      return (
-        <View style={{borderColor: 'gray', borderWidth: 0.5}}>
-          <Image style={{ height: equalWidth,  width : equalWidth}} source={{ uri: 'https://qzt.letsbeta.com/static/ydlogo.jpg' }} resizeMode='cover' />
+    renderRowItem = ({item, index}) => {
+        return (
+        <View style={styles.logocontainer}>
+            <Image style={styles.logoimg} source={{ uri: config.endpoint+'static/logo/ydlogo.jpg' }} resizeMode='cover' />
+            <Image style={styles.vipimg} source={{ uri: this._getVipImage(item.vip) }} resizeMode='cover' />
+            <Text style={styles.companyname}>雅迪科技</Text>
         </View>
-      )
+        )
     }
 
   /* The swiper size is (width)375 & (height)160 */

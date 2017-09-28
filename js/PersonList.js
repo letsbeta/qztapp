@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 import { Button, Icon, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Text } from 'native-base';
+import config from '../config.json';
+
 export default class PersonList extends Component {
 
       constructor(props) {
@@ -43,7 +45,7 @@ export default class PersonList extends Component {
       return (
         <ListItem avatar>
                 <Left>
-                  <Thumbnail source={ { uri: 'https://qzt.letsbeta.com/static/nobody.jpg' } } />
+                  <Thumbnail source={ { uri: config.endpoint+'static/nobody.jpg' } } />
                 </Left>
                 <Body>
                   <Text>张三</Text>

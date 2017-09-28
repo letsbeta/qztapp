@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { FlatList, StyleSheet } from 'react-native';
 import { Grid, Col, ListItem, Thumbnail, Text, Body } from 'native-base';
+import config from '../config.json';
 
 export default class JobsList extends Component {
     constructor(props) {
@@ -42,7 +43,7 @@ export default class JobsList extends Component {
     _renderItem({item, index}) {
         return (
             <ListItem>
-              <Thumbnail square large source={ { uri: 'https://qzt.letsbeta.com/static/ydlogo.jpg' } } />
+              <Thumbnail square large source={ { uri: config.endpoint+'static/logo/ydlogo.jpg' } } />
               <Body>
                 <Text style={ styles.jobtitle }>
                   安镇雅迪喷漆工

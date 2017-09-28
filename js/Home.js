@@ -81,23 +81,23 @@ export default class MainScreen extends Component {
       <Container>
         <MainHeader/>
         <View style={{ flex: 1 }}>
-          { renderIf(this.state.tab1, <JobsList />) }
-          { renderIf(this.state.tab2, <PersonList />) }
-          { renderIf(this.state.tab3, <CompanyList />) }
+          { renderIf(this.state.tab1, <CompanyList />) }
+          { renderIf(this.state.tab2, <JobsList />) }
+          { renderIf(this.state.tab3, <PersonList />) }
         </View>
         <Footer>
           <FooterTab>
             <Button active={ this.state.tab1 } onPress={ () => this.toggleTab1() } vertical>
               <Icon name="apps" />
-              <Text>职位</Text>
+              <Text>企业</Text>
             </Button>
             <Button active={ this.state.tab2 } onPress={ () => this.toggleTab2() } vertical>
               <Icon name="construct" />
-              <Text>找人</Text>
+              <Text>职位</Text>
             </Button>
             <Button active={ this.state.tab3 } onPress={ () => this.toggleTab3() } vertical>
               <Icon active name="navigate" />
-              <Text>社区</Text>
+              <Text>找人</Text>
             </Button>
             <Button active={ this.state.tab4 } onPress={ () => this.toggleTab4() } vertical>
               <Icon name="contact" />

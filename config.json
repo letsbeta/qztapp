@@ -1,5 +1,6 @@
 {
     "title": "求职通",
     "headerBgColor": "#53BDF8",
-    "headerTextColor": "white"
+    "headerTextColor": "white",
+    "endpoint": "https://qzt.letsbeta.com/"
 }
