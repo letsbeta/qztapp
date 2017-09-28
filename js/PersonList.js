@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
-import { Button, Icon, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Text } from 'native-base';
+import { FlatList, StyleSheet, View } from 'react-native';
+import { Button, Icon, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Text, Item, Input, Grid, Col } from 'native-base';
 import config from '../config.json';
 
 export default class PersonList extends Component {
@@ -60,6 +60,7 @@ export default class PersonList extends Component {
 
     render() {
       return (
+        <View style={{flex: 1}}>
         <FlatList
           data={ this.state.data } 
           renderItem={ this._renderItem } 
@@ -68,7 +69,9 @@ export default class PersonList extends Component {
           onEndReached={ this._onEndReached.bind(this) }
           onEndReachedThreshold={ 0 }>
           </FlatList>
+          </View>
         );
+        
     }
 }
 
