@@ -68,7 +68,7 @@ export default class MySetting extends Component {
 
                     <Grid style={styles.announcement}>
                         <Row><Text style={styles.anntitle}>公告(2017-09-27)</Text></Row>
-                        <Row><Text style={styles.annbody}>后台服务器将于今日进行维护，届时将会导致部分业务中断。请耐心等会。对给您带来的不便深表歉意。</Text></Row>
+                        <Row><Text style={styles.annbody}>后台服务器将于近日进行维护，届时将会导致部分业务中断。请耐心等候。对给您带来的不便深表歉意。</Text></Row>
 
                     </Grid>
                 </Row>
