@@ -61,7 +61,7 @@ export default class PersonList extends Component {
         return (
             <ListItem avatar>
                 <Left>
-                    <Thumbnail source={{uri: config.endpoint + "static/nobody.jpg"}}/>
+                    <Thumbnail source={{uri: config.endpoint + "static/avatar/male.jpg"}}/>
                 </Left>
                 <Body>
                 <Text>张三</Text>

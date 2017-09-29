@@ -5,6 +5,7 @@ import {Container, Header, Footer, FooterTab, Button, Icon, Text, Badge, Left, R
 import JobsList from "./JobsList";
 import PersonList from "./PersonList";
 import CompanyList from "./CompanyList";
+import MySetting from "./MySetting";
 import renderIf from "./utils";
 import config from "../config.json";
 
@@ -14,7 +15,7 @@ export class MainHeader extends Component {
             <Header style={{backgroundColor: config.headerBgColor}}>
                 <Left>
                     <Button transparent>
-                        <Icon style={{"color": config.headerTextColor}} ios="ios-menu" android="md-menu"/>
+                        <Icon style={{"color": config.headerTextColor}} ios="ios-search" android="md-search"/>
                     </Button>
                 </Left>
                 <Body>
@@ -84,6 +85,7 @@ export default class MainScreen extends Component {
                     {renderIf(this.state.tab1, <CompanyList/>)}
                     {renderIf(this.state.tab2, <JobsList/>)}
                     {renderIf(this.state.tab3, <PersonList/>)}
+                    {renderIf(this.state.tab4, <MySetting/>)}
                 </View>
                 <Footer>
                     <FooterTab>

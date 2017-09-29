@@ -24,8 +24,8 @@ const styles = {
     },
     logocontainer: {
         borderColor: "#DDDDDD",
-        borderBottomWidth: 0.5,
-        borderRightWidth: 0.5
+        borderBottomWidth: 1,
+        borderRightWidth: 1
     },
     logoimg: {
         height: equalWidth,
@@ -70,7 +70,7 @@ export default class CompanyList extends Component {
 
     _getVipImage(level) {
         if (level == 0) {
-            vip = "static/vip/ptvip.png";
+            vip = "static/vip/novip.png";
         }
         else if (level == 1) {
             vip = "static/vip/hjvip.png";
