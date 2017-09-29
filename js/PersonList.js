@@ -1,11 +1,27 @@
-import React, { Component } from 'react';
-import { FlatList, StyleSheet, View } from 'react-native';
-import { Button, Icon, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Text, Item, Input, Grid, Col } from 'native-base';
-import config from '../config.json';
+import React, {Component} from "react";
+import {FlatList, StyleSheet, View} from "react-native";
+import {
+    Button,
+    Icon,
+    Header,
+    Content,
+    List,
+    ListItem,
+    Left,
+    Body,
+    Right,
+    Thumbnail,
+    Text,
+    Item,
+    Input,
+    Grid,
+    Col
+} from "native-base";
+import config from "../config.json";
 
 export default class PersonList extends Component {
 
-      constructor(props) {
+    constructor(props) {
         super(props);
         this.state = {
             data: [
@@ -31,61 +47,61 @@ export default class PersonList extends Component {
                 }
             ])
         });
-    }
+    };
 
     _footer() {
-      return (
-          <Text style={ styles.loadmore }>
-            加载更多...
-          </Text>
-          );
+        return (
+            <Text style={styles.loadmore}>
+                加载更多...
+            </Text>
+        );
     }
 
     _renderItem({item, index}) {
-      return (
-        <ListItem avatar>
+        return (
+            <ListItem avatar>
                 <Left>
-                  <Thumbnail source={ { uri: config.endpoint+'static/nobody.jpg' } } />
+                    <Thumbnail source={{uri: config.endpoint + "static/nobody.jpg"}}/>
                 </Left>
                 <Body>
-                  <Text>张三</Text>
-                  <Text style={styles.persondesc}>三年以上电焊经验，熟练掌握鱼鳞焊等工艺，吃苦耐劳 . .</Text>
+                <Text>张三</Text>
+                <Text style={styles.persondesc}>三年以上电焊经验，熟练掌握鱼鳞焊等工艺，吃苦耐劳 . .</Text>
                 </Body>
                 <Right>
-                  <Text note>3:43 pm</Text>
+                    <Text note>3:43 pm</Text>
                 </Right>
-        </ListItem>
-          );
-  }
+            </ListItem>
+        );
+    }
 
     render() {
-      return (
-        <View style={{flex: 1}}>
-        <FlatList
-          data={ this.state.data } 
-          renderItem={ this._renderItem } 
-          keyExtractor={ (item, index) => item.id } 
-          ListFooterComponent={ this._footer.bind(this) } 
-          onEndReached={ this._onEndReached.bind(this) }
-          onEndReachedThreshold={ 0 }>
-          </FlatList>
-          </View>
+        return (
+            <View style={{flex: 1}}>
+                <FlatList
+                    data={this.state.data}
+                    renderItem={this._renderItem}
+                    keyExtractor={(item, index) => item.id}
+                    ListFooterComponent={this._footer.bind(this)}
+                    onEndReached={this._onEndReached.bind(this)}
+                    onEndReachedThreshold={0}>
+                </FlatList>
+            </View>
         );
-        
+
     }
 }
 
 
 const styles = StyleSheet.create({
-  persondesc: {
-    fontSize: 13,
-    paddingTop: 5,
-    color: 'gray'
-  },
-  loadmore: {
-      textAlign: 'center',
-      fontSize: 13,
-      color: '#99bbff',
-      marginTop: 8
-  }
+    persondesc: {
+        fontSize: 13,
+        paddingTop: 5,
+        color: "gray"
+    },
+    loadmore: {
+        textAlign: "center",
+        fontSize: 13,
+        color: "#99bbff",
+        marginTop: 8
+    }
 });

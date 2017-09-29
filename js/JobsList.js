@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { FlatList, StyleSheet } from 'react-native';
-import { Grid, Col, ListItem, Thumbnail, Text, Body } from 'native-base';
-import config from '../config.json';
+import React, {Component} from "react";
+import {FlatList, StyleSheet} from "react-native";
+import {Grid, Col, ListItem, Thumbnail, Text, Body} from "native-base";
+import config from "../config.json";
 
 export default class JobsList extends Component {
     constructor(props) {
@@ -30,65 +30,65 @@ export default class JobsList extends Component {
                 }
             ])
         });
-    }
+    };
 
     _footer() {
         return (
-            <Text style={ styles.loadmore }>
-              加载更多...
+            <Text style={styles.loadmore}>
+                加载更多...
             </Text>
-            );
+        );
     }
 
     _renderItem({item, index}) {
         return (
             <ListItem>
-              <Thumbnail square large source={ { uri: config.endpoint+'static/logo/ydlogo.jpg' } } />
-              <Body>
-                <Text style={ styles.jobtitle }>
-                  安镇雅迪喷漆工
-                  { index + 1 }
+                <Thumbnail square large source={{uri: config.endpoint + "static/logo/ydlogo.jpg"}}/>
+                <Body>
+                <Text style={styles.jobtitle}>
+                    安镇雅迪喷漆工
+                    {index + 1}
                 </Text>
-                <Text style={ styles.jobdesc }>
-                  环境好，待遇优。提供住宿，公司食堂。工资月结，欲投从速。
+                <Text style={styles.jobdesc}>
+                    环境好，待遇优。提供住宿，公司食堂。工资月结，欲投从速。
                 </Text>
-                <Grid style={ styles.banner }>
-                  <Col style={ styles.bannercol }>
-                  <Text style={ styles.bannertext }>
-                    2017-10-26 13:00:02
-                  </Text>
-                  </Col>
-                  <Col style={ [styles.bannercol, styles.textright] }>
-                  <Text style={ styles.bannertext }>浏览: 99999</Text>
-                  </Col>
+                <Grid style={styles.banner}>
+                    <Col style={styles.bannercol}>
+                        <Text style={styles.bannertext}>
+                            2017-10-26 13:00:02
+                        </Text>
+                    </Col>
+                    <Col style={[styles.bannercol, styles.textright]}>
+                        <Text style={styles.bannertext}>浏览: 99999</Text>
+                    </Col>
                 </Grid>
-              </Body>
+                </Body>
             </ListItem>
-            );
+        );
     }
 
     render() {
         return (
             <FlatList
-              data={ this.state.data } 
-              renderItem={ this._renderItem } 
-              keyExtractor={ (item, index) => item.id } 
-              ListFooterComponent={ this._footer.bind(this) } 
-              onEndReached={ this._onEndReached.bind(this) }
-              onEndReachedThreshold={ 0 }>
-              </FlatList>
-            );
+                data={this.state.data}
+                renderItem={this._renderItem}
+                keyExtractor={(item, index) => item.id}
+                ListFooterComponent={this._footer.bind(this)}
+                onEndReached={this._onEndReached.bind(this)}
+                onEndReachedThreshold={0}>
+            </FlatList>
+        );
     }
 }
 
 const styles = StyleSheet.create({
     jobtitle: {
-        fontWeight: 'bold'
+        fontWeight: "bold"
     },
     jobdesc: {
         fontSize: 12,
         paddingTop: 5,
-        color: 'gray'
+        color: "gray"
     },
     banner: {
         marginTop: 10,
@@ -96,21 +96,21 @@ const styles = StyleSheet.create({
     },
     bannercol: {
         height: 20,
-        flexDirection: 'column',
-        justifyContent: 'center'
+        flexDirection: "column",
+        justifyContent: "center"
     },
     textright: {
-        alignItems: 'flex-end'
+        alignItems: "flex-end"
     },
     bannertext: {
         marginLeft: 0,
         fontSize: 10,
-        color: 'gray'
+        color: "gray"
     },
     loadmore: {
-        textAlign: 'center',
+        textAlign: "center",
         fontSize: 13,
-        color: '#99bbff',
+        color: "#99bbff",
         marginTop: 8
     }
 });
