@@ -1,22 +1,6 @@
 import React, {Component} from "react";
-import {FlatList, StyleSheet, View} from "react-native";
-import {
-    Button,
-    Icon,
-    Header,
-    Content,
-    List,
-    ListItem,
-    Left,
-    Body,
-    Right,
-    Thumbnail,
-    Text,
-    Item,
-    Input,
-    Grid,
-    Col
-} from "native-base";
+import {FlatList, StyleSheet, View, Alert, Text} from "react-native";
+import {CandidateItem} from "./widget/index.js";
 import config from "../config.json";
 
 export default class PersonList extends Component {
@@ -57,22 +41,18 @@ export default class PersonList extends Component {
         );
     }
 
-    _renderItem({item, index}) {
+    _onPress = (index) => {
+        Alert.alert("Pressed"+index);
+    };
+
+    _renderItem = ({item, index}) => {
         return (
-            <ListItem avatar>
-                <Left>
-                    <Thumbnail source={{uri: config.endpoint + "static/avatar/male.jpg"}}/>
-                </Left>
-                <Body>
-                <Text>张三</Text>
-                <Text style={styles.persondesc}>三年以上电焊经验，熟练掌握鱼鳞焊等工艺，吃苦耐劳 . .</Text>
-                </Body>
-                <Right>
-                    <Text note>3:43 pm</Text>
-                </Right>
-            </ListItem>
-        );
-    }
+            <CandidateItem avatar={config.endpoint + "static/avatar/male.png"}
+              name={"张三"} desc={"三年以上电焊经验，熟练掌握鱼鳞焊等工艺，吃苦耐劳 . ."}
+              updated_at={"3:43 pm"}
+              onPress={this._onPress.bind(this, index)}/>
+        )
+    };
 
     render() {
         return (
@@ -93,11 +73,6 @@ export default class PersonList extends Component {
 
 
 const styles = StyleSheet.create({
-    persondesc: {
-        fontSize: 13,
-        paddingTop: 5,
-        color: "gray"
-    },
     loadmore: {
         textAlign: "center",
         fontSize: 13,

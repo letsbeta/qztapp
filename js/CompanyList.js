@@ -1,12 +1,13 @@
 import React, {Component} from "react";
 import {
-    Text,
     View,
     Image,
     FlatList,
     Dimensions,
+    Alert
 } from "react-native";
 import Swiper from "react-native-swiper";
+import {EnterpriseCard} from "./widget/index.js";
 import config from "../config.json";
 
 const {width, height} = Dimensions.get("window");
@@ -14,36 +15,13 @@ const equalWidth = (width / 2 );
 
 const styles = {
     swipercontainer: {
-        height: 160
+        height: width*0.42
     },
     banner: {
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#9DD6EB"
-    },
-    logocontainer: {
-        borderColor: "#DDDDDD",
-        borderBottomWidth: 1,
-        borderRightWidth: 1
-    },
-    logoimg: {
-        height: equalWidth,
-        width: equalWidth
-    },
-    vipimg: {
-        position: "absolute",
-        left: 0,
-        top: 0,
-        height: 40,
-        width: 40
-    },
-    companyname: {
-        textAlign: "center",
-        fontSize: 16,
-        fontWeight: "bold",
-        backgroundColor: "#99CCFF",
-        color: "white"
     }
 };
 
@@ -52,7 +30,8 @@ export default class CompanyList extends Component {
         super(props);
         this.state = {
             items: [],
-            data: [{"id": 1, "vip": 3}, {"id": 2, "vip": 2}, {"id": 3, "vip": 1}, {"id": 4, "vip": 0}]
+            data: [{"id": 1, "vip": 3}, {"id": 2, "vip": 2}, {"id": 3, "vip": 1}, {"id": 4, "vip": 0},
+                {"id": 5, "vip": 3}, {"id": 6, "vip": 2}, {"id": 7, "vip": 1}, {"id": 8, "vip": 0}]
         };
     }
 
@@ -70,28 +49,37 @@ export default class CompanyList extends Component {
 
     _getVipImage(level) {
         if (level == 0) {
-            vip = "static/vip/novip.png";
+            vip = "static/vip/qt.png";
         }
         else if (level == 1) {
-            vip = "static/vip/hjvip.png";
+            vip = "static/vip/hj.png";
         }
         else if (level == 2) {
-            vip = "static/vip/bjvip.png";
+            vip = "static/vip/bj.png";
         }
         else if (level == 3) {
-            vip = "static/vip/zsvip.png";
+            vip = "static/vip/zs.png";
         }
         return config.endpoint + vip;
     }
 
+    _getBgImage(index) {
+        bgs = ["static/bg/bgblue.png", "static/bg/bgyellow.png", "static/bg/bgpink.png", "static/bg/bggreen.png"]
+        var idx = index % 4;
+        return config.endpoint + bgs[idx];
+    }
+
+    _onPress (index) {
+        Alert.alert("Pressed"+index);
+    };
+
     renderRowItem = ({item, index}) => {
         return (
-            <View style={styles.logocontainer}>
-                <Image style={styles.logoimg} source={{uri: config.endpoint + "static/logo/ydlogo.jpg"}}
-                       resizeMode='cover'/>
-                <Image style={styles.vipimg} source={{uri: this._getVipImage(item.vip)}} resizeMode='cover'/>
-                <Text style={styles.companyname}>雅迪科技</Text>
-            </View>
+            <EnterpriseCard bg={this._getBgImage(index)}
+              name={"雅迪电动车"} slogan={"行业领导者，高端销量遥遥领先"}
+              tel={"13182762105"} vip={this._getVipImage(item.vip)}
+              logo={config.endpoint + "static/logo/letsbeta.jpg"}
+              onPress={this._onPress.bind(this, index)}/>
         );
     };
 
@@ -99,6 +87,7 @@ export default class CompanyList extends Component {
     render() {
         return (
             <View style={{flex: 1}}>
+                {/*轮播图片展示区*/}
                 <View style={styles.swipercontainer}>
                     <Swiper autoplay>
                         {this.state.items.map((item, key) => {
@@ -112,6 +101,8 @@ export default class CompanyList extends Component {
                         })}
                     </Swiper>
                 </View>
+
+                {/*企业列表*/}
                 <View style={{flex: 1}}>
                     <FlatList
                         data={this.state.data}

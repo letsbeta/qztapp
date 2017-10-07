@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import {FlatList, StyleSheet} from "react-native";
-import {Grid, Col, ListItem, Thumbnail, Text, Body} from "native-base";
+import {FlatList, StyleSheet, Alert, Text} from "react-native";
+import {JobItem} from "./widget/index.js";
 import config from "../config.json";
 
 export default class JobsList extends Component {
@@ -40,32 +40,18 @@ export default class JobsList extends Component {
         );
     }
 
-    _renderItem({item, index}) {
+    _onPress = (index) => {
+        Alert.alert("Pressed"+index);
+    };
+
+    _renderItem = ({item, index}) => {
         return (
-            <ListItem>
-                <Thumbnail square large source={{uri: config.endpoint + "static/logo/ydlogo.jpg"}}/>
-                <Body>
-                <Text style={styles.jobtitle}>
-                    安镇雅迪喷漆工
-                    {index + 1}
-                </Text>
-                <Text style={styles.jobdesc}>
-                    环境好，待遇优。提供住宿，公司食堂。工资月结，欲投从速。
-                </Text>
-                <Grid style={styles.banner}>
-                    <Col style={styles.bannercol}>
-                        <Text style={styles.bannertext}>
-                            2017-10-26 13:00:02
-                        </Text>
-                    </Col>
-                    <Col style={[styles.bannercol, styles.textright]}>
-                        <Text style={styles.bannertext}>浏览: 99999</Text>
-                    </Col>
-                </Grid>
-                </Body>
-            </ListItem>
+            <JobItem logo={config.endpoint + "static/logo/letsbeta.jpg"}
+                     title={"安镇雅迪喷漆工" + (index + 1)} desc={"环境好，待遇优。提供住宿，公司食堂。工资月结，欲投从速。"}
+                     updated_at={"2017-10-26 13:00:02"} viewed={"999"}
+                     onPress={this._onPress.bind(this, index)} />
         );
-    }
+    };
 
     render() {
         return (
@@ -82,31 +68,6 @@ export default class JobsList extends Component {
 }
 
 const styles = StyleSheet.create({
-    jobtitle: {
-        fontWeight: "bold"
-    },
-    jobdesc: {
-        fontSize: 12,
-        paddingTop: 5,
-        color: "gray"
-    },
-    banner: {
-        marginTop: 10,
-        marginLeft: 9
-    },
-    bannercol: {
-        height: 20,
-        flexDirection: "column",
-        justifyContent: "center"
-    },
-    textright: {
-        alignItems: "flex-end"
-    },
-    bannertext: {
-        marginLeft: 0,
-        fontSize: 10,
-        color: "gray"
-    },
     loadmore: {
         textAlign: "center",
         fontSize: 13,
