@@ -13,12 +13,29 @@ import {
     Body,
     Grid,
     Col,
+    Row,
     Left,
     Right,
+    Button
 } from "native-base";
 
 const {width, height} = Dimensions.get("window");
 const equalWidth = (width / 2 );
+
+/*列表尾部加载更多标签*/
+export class LoadMore extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <Text style={{textAlign: "center", fontSize: 13, color: "#99bbff", marginTop: 8}}>
+                加载更多...
+            </Text>
+        );
+    }
+}
 
 /*企业展示卡片*/
 export class EnterpriseCard extends Component {
@@ -161,6 +178,121 @@ export class CandidateItem extends Component {
                     <Text style={{fontSize: 10, color: "gray"}}>{this.props.updated_at}</Text>
                 </Right>
             </ListItem>
+        );
+    }
+}
+
+
+/*个人信息卡片*/
+export class ProfileCard extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    /*
+    * avatar: uri
+    * name: string
+    * tel: string
+    * setting: uri
+    * onPress: func*/
+
+    render() {
+        return (
+            <Grid style={{backgroundColor: "#53BDF8", alignItems: "center"}}>
+                <Col size={1} style={{alignItems: "center"}}>
+                    <Thumbnail source={{uri: this.props.avatar}}
+                               style={{borderColor: "white", borderWidth: 1.5}}/>
+                </Col>
+                <Col size={3} style={{marginLeft: 15}}>
+                    <Text style={{color: "white", fontSize: 18}}>{this.props.name}</Text>
+                    <Text style={{color: "white", marginTop: 5}}>{this.props.tel}</Text>
+                </Col>
+                <Col size={1} style={{alignItems: "center"}}>
+                    <Button transparent onPress={this.props.onPress}>
+                        <Image style={{width: 25, height: 25}} source={{uri: this.props.setting}}/>
+                    </Button>
+                </Col>
+            </Grid>
+        );
+    }
+}
+
+/*企业信息卡片*/
+export class EntProfileCard extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    /*
+    * logo: uri
+    * vip: uri
+    * entname: string
+    * edit: uri
+    * onPress: func*/
+
+    render() {
+        return (
+            <Grid style={{backgroundColor: "white", alignItems: "center"}}>
+                <Col size={1}>
+                    <Thumbnail square source={{uri: this.props.logo}}/>
+                </Col>
+                <Col size={1}>
+                    <Image style={{width: 60, height: 36}}
+                           source={{uri: this.props.vip}}/>
+                </Col>
+                <Col size={2}>
+                    <Text>{this.props.entname}</Text>
+                </Col>
+                <Col size={1} style={{alignItems: "center"}}>
+                    <Button transparent onPress={this.props.onPress}>
+                        <Image style={{width: 25, height: 25}} source={{uri: this.props.edit}}/>
+                    </Button>
+                </Col>
+            </Grid>
+        );
+    }
+}
+
+/*带文字的按钮*/
+export class TextButton extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    /*
+    * icon: uri
+    * text: string
+    * onPress: func*/
+
+    render() {
+        return (
+            <View>
+                <Button transparent vertical onPress={this.props.onPress}>
+                    <Image style={{width: 30, height: 30}} source={{uri: this.props.icon}}></Image>
+                    <Text style={{color: "black", fontSize: 14, marginTop: 3}}>{this.props.text}</Text>
+                </Button>
+            </View>
+        );
+    }
+}
+
+/*公告栏*/
+export class NoticeBoard extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    /*
+    * title: string
+    * content: string
+    * */
+
+    render() {
+        return (
+            <Grid style={{backgroundColor: "white", marginTop: 5}}>
+                <Row size={1}><Text style={{marginLeft: 5, marginRight: 2, color: "#2ba9f5"}}>{this.props.title}</Text></Row>
+                <Row size={2}><Text style={{marginLeft: 5, marginRight: 2}}>{this.props.content}</Text></Row>
+            </Grid>
         );
     }
 }

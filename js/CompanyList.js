@@ -3,10 +3,10 @@ import {
     View,
     Image,
     FlatList,
-    Dimensions,
-    Alert
+    Dimensions
 } from "react-native";
 import Swiper from "react-native-swiper";
+import {alertMe} from "./utils";
 import {EnterpriseCard} from "./widget/index.js";
 import config from "../config.json";
 
@@ -30,8 +30,8 @@ export default class CompanyList extends Component {
         super(props);
         this.state = {
             items: [],
-            data: [{"id": 1, "vip": 3}, {"id": 2, "vip": 2}, {"id": 3, "vip": 1}, {"id": 4, "vip": 0},
-                {"id": 5, "vip": 3}, {"id": 6, "vip": 2}, {"id": 7, "vip": 1}, {"id": 8, "vip": 0}]
+            data: [{"id": 1, "vip": 4}, {"id": 2, "vip": 3}, {"id": 3, "vip": 2}, {"id": 4, "vip": 1},
+                {"id": 5, "vip": 0}, {"id": 6, "vip": 0}, {"id": 7, "vip": 0}, {"id": 8, "vip": 0}]
         };
     }
 
@@ -52,12 +52,15 @@ export default class CompanyList extends Component {
             vip = "static/vip/qt.png";
         }
         else if (level == 1) {
-            vip = "static/vip/hj.png";
+            vip = "static/vip/by.png";
         }
         else if (level == 2) {
-            vip = "static/vip/bj.png";
+            vip = "static/vip/hj.png";
         }
         else if (level == 3) {
+            vip = "static/vip/bj.png";
+        }
+        else if (level == 4) {
             vip = "static/vip/zs.png";
         }
         return config.endpoint + vip;
@@ -70,7 +73,7 @@ export default class CompanyList extends Component {
     }
 
     _onPress (index) {
-        Alert.alert("Pressed"+index);
+        alertMe("Pressed"+index);
     };
 
     renderRowItem = ({item, index}) => {

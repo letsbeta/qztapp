@@ -1,6 +1,7 @@
 import React, {Component} from "react";
-import {FlatList, StyleSheet, Alert, Text} from "react-native";
-import {JobItem} from "./widget/index.js";
+import {FlatList, Text} from "react-native";
+import {alertMe} from "./utils";
+import {JobItem, LoadMore} from "./widget/index.js";
 import config from "../config.json";
 
 export default class JobsList extends Component {
@@ -34,14 +35,12 @@ export default class JobsList extends Component {
 
     _footer() {
         return (
-            <Text style={styles.loadmore}>
-                加载更多...
-            </Text>
+            <LoadMore/>
         );
     }
 
     _onPress = (index) => {
-        Alert.alert("Pressed"+index);
+        alertMe("Pressed"+index);
     };
 
     _renderItem = ({item, index}) => {
@@ -67,11 +66,3 @@ export default class JobsList extends Component {
     }
 }
 
-const styles = StyleSheet.create({
-    loadmore: {
-        textAlign: "center",
-        fontSize: 13,
-        color: "#99bbff",
-        marginTop: 8
-    }
-});

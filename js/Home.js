@@ -6,24 +6,24 @@ import JobsList from "./JobsList";
 import PersonList from "./PersonList";
 import CompanyList from "./CompanyList";
 import MySetting from "./MySetting";
-import renderIf from "./utils";
+import {renderIf} from "./utils";
 import config from "../config.json";
 
 export class MainHeader extends Component {
     render() {
         return (
             <Header style={{backgroundColor: config.headerBgColor}}>
-                <Left>
-                    <Button transparent>
-                        <Icon style={{"color": config.headerTextColor}} ios="ios-search" android="md-search"/>
-                    </Button>
-                </Left>
+                <Left/>
                 <Body>
                 <Title style={{"color": config.headerTextColor}}>
                     {config.title}
                 </Title>
                 </Body>
-                <Right/>
+                <Right>
+                    <Button transparent>
+                        <Icon style={{"color": config.headerTextColor}} ios="ios-add" android="md-add"/>
+                    </Button>
+                </Right>
             </Header>
         );
     }
