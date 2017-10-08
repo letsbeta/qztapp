@@ -55,13 +55,15 @@ export class EnterpriseCard extends Component {
     render() {
         return (
             <TouchableOpacity onPress={this.props.onPress}>
+                {/*Image作为背景*/}
                 <Image style={{width: equalWidth - 6, height: equalWidth * 0.6, margin: 3}}
                        source={{uri: this.props.bg}}>
                     <View style={{flex: 1, flexDirection: "column"}}>
-                        <View style={{flex: 1, backgroundColor: "transparent", marginTop: 8, marginLeft: 5}}><Text
-                            style={{color: "white", fontSize: 16, fontWeight: "bold"}}>{this.props.name}</Text>
-                            <Text
-                                style={{color: "white", fontSize: 12}}>{this.props.slogan}</Text>
+                        <View style={{flex: 1, backgroundColor: "transparent", marginTop: 8, marginLeft: 5}}>
+                            {/*企业名称*/}
+                            <Text style={{color: "white", fontSize: 16, fontWeight: "bold"}}>{this.props.name}</Text>
+                            {/*企业标语*/}
+                            <Text style={{color: "white", fontSize: 12}}>{this.props.slogan}</Text>
                         </View>
 
                         <View style={{flex: 2}}>
@@ -72,7 +74,9 @@ export class EnterpriseCard extends Component {
                                         backgroundColor: "transparent",
                                         justifyContent: "space-around"
                                     }}>
+                                        {/*企业电话*/}
                                         <Text style={{color: "white", marginLeft: 5}}>{this.props.tel}</Text>
+                                        {/*企业VIP图标*/}
                                         <Image style={{width: 40, height: 26}}
                                                source={{uri: this.props.vip}}/>
                                     </View>
@@ -83,6 +87,7 @@ export class EnterpriseCard extends Component {
                                     alignItems: "center",
                                     justifyContent: "center"
                                 }}>
+                                    {/*企业logo*/}
                                     <Image style={{width: 60, height: 60}}
                                            source={{uri: this.props.logo}}/>
                                 </View>
@@ -126,7 +131,7 @@ export class JobItem extends Component {
                     </Text>
 
                     {/*职位描述*/}
-                    <Text style={{fontSize: 12, color: "gray", paddingTop: 5}}>
+                    <Text style={{fontSize: 13, color: "gray", paddingTop: 5}}>
                         {this.props.desc}
                     </Text>
 
@@ -168,12 +173,16 @@ export class CandidateItem extends Component {
                 <Left>
                     <Thumbnail source={{uri: this.props.avatar}}/>
                 </Left>
+
+                {/*用户姓名简介*/}
                 <Body>
                 <TouchableOpacity onPress={this.props.onPress}>
                     <Text>{this.props.name}</Text>
                     <Text style={{fontSize: 13, paddingTop: 5, color: "gray"}}>{this.props.desc}</Text>
                 </TouchableOpacity>
                 </Body>
+
+                {/*更新时间*/}
                 <Right>
                     <Text style={{fontSize: 10, color: "gray"}}>{this.props.updated_at}</Text>
                 </Right>
@@ -199,14 +208,17 @@ export class ProfileCard extends Component {
     render() {
         return (
             <Grid style={{backgroundColor: "#53BDF8", alignItems: "center"}}>
+                {/*用户头像*/}
                 <Col size={1} style={{alignItems: "center"}}>
                     <Thumbnail source={{uri: this.props.avatar}}
                                style={{borderColor: "white", borderWidth: 1.5}}/>
                 </Col>
+                {/*姓名电话*/}
                 <Col size={3} style={{marginLeft: 15}}>
                     <Text style={{color: "white", fontSize: 18}}>{this.props.name}</Text>
                     <Text style={{color: "white", marginTop: 5}}>{this.props.tel}</Text>
                 </Col>
+                {/*设置按钮*/}
                 <Col size={1} style={{alignItems: "center"}}>
                     <Button transparent onPress={this.props.onPress}>
                         <Image style={{width: 25, height: 25}} source={{uri: this.props.setting}}/>
@@ -233,16 +245,20 @@ export class EntProfileCard extends Component {
     render() {
         return (
             <Grid style={{backgroundColor: "white", alignItems: "center"}}>
+                {/*企业logo*/}
                 <Col size={1}>
                     <Thumbnail square source={{uri: this.props.logo}}/>
                 </Col>
+                {/*企业VIP图标*/}
                 <Col size={1}>
                     <Image style={{width: 60, height: 36}}
                            source={{uri: this.props.vip}}/>
                 </Col>
+                {/*企业名称*/}
                 <Col size={2}>
                     <Text>{this.props.entname}</Text>
                 </Col>
+                {/*编辑按钮*/}
                 <Col size={1} style={{alignItems: "center"}}>
                     <Button transparent onPress={this.props.onPress}>
                         <Image style={{width: 25, height: 25}} source={{uri: this.props.edit}}/>
@@ -290,7 +306,9 @@ export class NoticeBoard extends Component {
     render() {
         return (
             <Grid style={{backgroundColor: "white", marginTop: 5}}>
+                {/*公告标题*/}
                 <Row size={1}><Text style={{marginLeft: 5, marginRight: 2, color: "#2ba9f5"}}>{this.props.title}</Text></Row>
+                {/*公告内容*/}
                 <Row size={2}><Text style={{marginLeft: 5, marginRight: 2}}>{this.props.content}</Text></Row>
             </Grid>
         );

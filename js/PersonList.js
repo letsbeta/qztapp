@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {FlatList, View, Text} from "react-native";
 import {alertMe} from "./utils";
-import {CandidateItem, LoadMore} from "./widget/index.js";
+import {CandidateItem, LoadMore} from "./widget/index";
 import config from "../config.json";
 
 export default class PersonList extends Component {

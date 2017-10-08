@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {FlatList, Text} from "react-native";
 import {alertMe} from "./utils";
-import {JobItem, LoadMore} from "./widget/index.js";
+import {JobItem, LoadMore} from "./widget/index";
 import config from "../config.json";
 
 export default class JobsList extends Component {

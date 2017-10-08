@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import Swiper from "react-native-swiper";
 import {alertMe} from "./utils";
-import {EnterpriseCard} from "./widget/index.js";
+import {EnterpriseCard} from "./widget/index";
 import config from "../config.json";
 
 const {width, height} = Dimensions.get("window");
