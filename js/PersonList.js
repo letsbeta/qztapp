@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {FlatList, View, Text} from "react-native";
+import {FlatList, View, Text, RefreshControl} from "react-native";
 import {alertMe} from "./utils";
 import {CandidateItem, LoadMore} from "./widget/index";
 import config from "../config.json";
@@ -19,7 +19,8 @@ export default class PersonList extends Component {
                 {
                     id: 3
                 }
-            ]
+            ],
+            refreshing: false
         };
     }
 
@@ -44,6 +45,17 @@ export default class PersonList extends Component {
         alertMe("Pressed"+index);
     };
 
+    _onRefresh = () => {
+        // 需要首先设置refreshing为true
+        this.setState({refreshing: true});
+
+        //异步操作完成之后设置refreshing为false
+        setTimeout(
+            () => {alertMe("timer"); this.setState({refreshing: false});},
+            2000
+            );
+    };
+
     _renderItem = ({item, index}) => {
         return (
             <CandidateItem avatar={config.endpoint + "static/avatar/male.png"}
@@ -62,8 +74,13 @@ export default class PersonList extends Component {
                     keyExtractor={(item, index) => item.id}
                     ListFooterComponent={this._footer.bind(this)}
                     onEndReached={this._onEndReached.bind(this)}
-                    onEndReachedThreshold={0}>
-                </FlatList>
+                    onEndReachedThreshold={0}
+                    refreshControl={
+                        <RefreshControl
+                            refreshing={this.state.refreshing}
+                            onRefresh={this._onRefresh}
+                        />}
+                />
             </View>
         );
 
