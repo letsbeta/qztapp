@@ -3,6 +3,7 @@ import {
     View,
     Text,
     Image,
+    ImageBackground,
     FlatList,
     Dimensions,
     TouchableOpacity
@@ -56,7 +57,7 @@ export class EnterpriseCard extends Component {
         return (
             <TouchableOpacity onPress={this.props.onPress}>
                 {/*Image作为背景*/}
-                <Image style={{width: equalWidth - 6, height: equalWidth * 0.6, margin: 3}}
+                <ImageBackground style={{width: equalWidth - 6, height: equalWidth * 0.6, margin: 3}}
                        source={{uri: this.props.bg}}>
                     <View style={{flex: 1, flexDirection: "column"}}>
                         <View style={{flex: 1, backgroundColor: "transparent", marginTop: 8, marginLeft: 5}}>
@@ -96,7 +97,7 @@ export class EnterpriseCard extends Component {
                         </View>
 
                     </View>
-                </Image>
+                </ImageBackground>
             </TouchableOpacity>
         );
     }
