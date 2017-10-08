@@ -6,7 +6,7 @@ import JobsList from "./JobsList";
 import PersonList from "./PersonList";
 import CompanyList from "./CompanyList";
 import MySetting from "./MySetting";
-import {renderIf} from "./utils";
+import {alertMe, renderIf} from "./utils";
 import config from "../config.json";
 
 export class MainHeader extends Component {
@@ -20,7 +20,7 @@ export class MainHeader extends Component {
                 </Title>
                 </Body>
                 <Right>
-                    <Button transparent>
+                    <Button transparent onPress={this.props.onPress}>
                         <Icon style={{"color": config.headerTextColor}} ios="ios-add" android="md-add"/>
                     </Button>
                 </Right>
@@ -30,6 +30,11 @@ export class MainHeader extends Component {
 }
 
 export default class MainScreen extends Component {
+
+    static navigationOptions = {
+        header: null,
+    };
+
     constructor(props) {
         super(props);
         this.state = {
@@ -78,9 +83,10 @@ export default class MainScreen extends Component {
 
     //Native base doesn't work with FlatList, so use View instead
     render() {
+        const { navigate } = this.props.navigation;
         return (
             <Container>
-                <MainHeader/>
+                <MainHeader onPress={() => {navigate('PlusHome', {user: 'Lucy'})}}/>
                 <View style={{flex: 1}}>
                     {renderIf(this.state.tab1, <CompanyList/>)}
                     {renderIf(this.state.tab2, <JobsList/>)}

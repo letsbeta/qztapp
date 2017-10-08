@@ -17,7 +17,8 @@ import {
     Row,
     Left,
     Right,
-    Button
+    Button,
+    Icon
 } from "native-base";
 
 const {width, height} = Dimensions.get("window");
@@ -58,7 +59,7 @@ export class EnterpriseCard extends Component {
             <TouchableOpacity onPress={this.props.onPress}>
                 {/*Image作为背景*/}
                 <ImageBackground style={{width: equalWidth - 6, height: equalWidth * 0.6, margin: 3}}
-                       source={{uri: this.props.bg}}>
+                                 source={{uri: this.props.bg}}>
                     <View style={{flex: 1, flexDirection: "column"}}>
                         <View style={{flex: 1, backgroundColor: "transparent", marginTop: 8, marginLeft: 5}}>
                             {/*企业名称*/}
@@ -121,7 +122,7 @@ export class JobItem extends Component {
     render() {
         return (
 
-            <ListItem>
+            <ListItem style={{marginLeft: 3}}>
                 <Thumbnail square large source={{uri: this.props.logo}}/>
 
                 <Body>
@@ -170,7 +171,7 @@ export class CandidateItem extends Component {
 
     render() {
         return (
-            <ListItem avatar>
+            <ListItem avatar style={{marginLeft: 3}}>
                 <Left>
                     <Thumbnail source={{uri: this.props.avatar}}/>
                 </Left>
@@ -312,6 +313,37 @@ export class NoticeBoard extends Component {
                 {/*公告内容*/}
                 <Row size={2}><Text style={{marginLeft: 5, marginRight: 2}}>{this.props.content}</Text></Row>
             </Grid>
+        );
+    }
+}
+
+/*公告栏*/
+export class ServiceItem extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    /*
+    * icon: uri
+    * name: string
+    * onPress: func*/
+
+    render() {
+        return (
+            <ListItem icon style={{marginLeft: 0}}>
+                <Left>
+                    <Image style={{width: 40, height: 40}}
+                           source={{uri: this.props.icon}}/>
+                </Left>
+                <Body>
+                <TouchableOpacity onPress={this.props.onPress}>
+                    <Text>企业入住</Text>
+                </TouchableOpacity>
+                </Body>
+                <Right>
+                    <Icon name="arrow-forward"/>
+                </Right>
+            </ListItem>
         );
     }
 }

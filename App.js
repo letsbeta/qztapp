@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View} from 'react-native';
+import { StackNavigator } from 'react-navigation';
+
 import MainScreen from './js/Home';
+import PlusScreen from './js/PlusHome'
 
 export default class App extends Component {
   render() {
@@ -9,4 +11,9 @@ export default class App extends Component {
       );
   }
 }
+
+export const SimpleApp = StackNavigator({
+    Home: { screen: MainScreen },
+    PlusHome: { screen: PlusScreen }
+});
 
