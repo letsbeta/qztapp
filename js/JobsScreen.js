@@ -1,10 +1,18 @@
-import React, {Component} from "react";
-import {FlatList, Text} from "react-native";
-import {alertMe} from "./utils";
-import {JobItem, LoadMore} from "./widget/index";
+import React, { Component } from "react";
+import { FlatList, Text } from "react-native";
+import { Icon } from "native-base";
+import { alertMe } from "./utils";
+import { JobItem, LoadMore } from "./widget/index";
 import config from "../config.json";
 
-export default class JobsList extends Component {
+export class JobsScreen extends Component {
+    static navigationOptions = {
+        tabBarLabel: '职位',
+        tabBarIcon: ({ focused, tintColor }) => (
+          <Icon name="construct" style={{color: tintColor}}/>
+        ),
+    };
+
     constructor(props) {
         super(props);
         this.state = {

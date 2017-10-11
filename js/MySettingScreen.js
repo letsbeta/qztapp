@@ -1,18 +1,19 @@
-import React, {Component} from "react";
-import {FlatList, StyleSheet, View, Dimensions, Image, Text} from "react-native";
-import {
-    Grid,
-    Col,
-    Row
-} from "native-base";
+import React, { Component } from "react";
+import { View, Text } from "react-native";
+import { Grid, Col, Row, Icon, Button } from "native-base";
 import config from "../config.json";
-import {alertMe} from "./utils";
-import {ProfileCard, EntProfileCard, TextButton, NoticeBoard} from "./widget/index";
-
-const {width, height} = Dimensions.get("window");
+import { alertMe } from "./utils";
+import { ProfileCard, EntProfileCard, TextButton, NoticeBoard } from "./widget/index";
 
 
-export default class MySetting extends Component {
+export class MySettingScreen extends Component {
+
+    static navigationOptions = {
+        tabBarLabel: '我的',
+        tabBarIcon: ({ focused, tintColor }) => (
+          <Icon name="contact" style={{color: tintColor}}/>
+        ),
+    };
 
     _onPress = () => {
         alertMe("It is pressed");
@@ -57,6 +58,23 @@ export default class MySetting extends Component {
                     </Grid>
                 </Row>
 
+                <Row style={{height: 80}}>
+                    <Grid style={styles.tool}>
+                        <Col style={{alignItems: "center", justifyContent: "center"}}>
+                            <TextButton icon={config.endpoint + "static/btn/changepw.png"}
+                                        text={"修改密码"} onPress={this._onPress}/>
+                        </Col>
+                        <Col style={{alignItems: "center", justifyContent: "center"}}>
+                            <TextButton icon={config.endpoint + "static/btn/refreshcv.png"}
+                                        text={"刷新简历"} onPress={this._onPress}/>
+                        </Col>
+                        <Col style={{alignItems: "center", justifyContent: "center"}}>
+                        </Col>
+                        <Col style={{alignItems: "center", justifyContent: "center"}}>
+                        </Col>
+                    </Grid>
+                </Row>
+
                 <Row style={{height: 90}}>
                     <NoticeBoard title={"公告(2017-09-27)"}
                                  content={"后台服务器将于近日进行维护，届时将会导致部分业务中断。请耐心等候。对给您带来的不便深表歉意。"}/>
@@ -67,12 +85,10 @@ export default class MySetting extends Component {
                                  content={"后台服务器将于近日进行维护，届时将会导致部分业务中断。请耐心等候。对给您带来的不便深表歉意。"}/>
                 </Row>
 
-                {/*页面的下半部分*/}
-                <Row>
-                    <View style={{flex: 4, marginTop: 5, backgroundColor: "white"}}>
-                        <Text/>
-                    </View>
-                </Row>
+                {/*退出登录*/}
+                <Button block danger style={{margin: 5}}>
+                    <Text style={{color: 'white', fontSize: 16}}>退出登录</Text>
+                </Button>
 
             </Grid>
 

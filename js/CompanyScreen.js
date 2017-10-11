@@ -1,13 +1,9 @@
-import React, {Component} from "react";
-import {
-    View,
-    Image,
-    FlatList,
-    Dimensions
-} from "react-native";
+import React, { Component } from "react";
+import { View, Image, FlatList, Dimensions } from "react-native";
+import { Icon } from "native-base";
 import Swiper from "react-native-swiper";
-import {alertMe} from "./utils";
-import {EnterpriseCard} from "./widget/index";
+import { alertMe } from "./utils";
+import { EnterpriseCard } from "./widget/index";
 import config from "../config.json";
 
 const {width, height} = Dimensions.get("window");
@@ -25,7 +21,14 @@ const styles = {
     }
 };
 
-export default class CompanyList extends Component {
+export class CompanyScreen extends Component {
+    static navigationOptions = {
+        tabBarLabel: '企业',
+        tabBarIcon: ({ focused, tintColor }) => (
+          <Icon name="apps" style={{color: tintColor}}/>
+        ),
+    };
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -106,7 +109,7 @@ export default class CompanyList extends Component {
                 </View>
 
                 {/*企业列表*/}
-                <View style={{flex: 1}}>
+                <View style={{flex: 1, backgroundColor: 'white'}}>
                     <FlatList
                         data={this.state.data}
                         numColumns={2}

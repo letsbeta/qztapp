@@ -1,10 +1,18 @@
-import React, {Component} from "react";
-import {FlatList, View, Text, RefreshControl} from "react-native";
-import {alertMe} from "./utils";
-import {CandidateItem, LoadMore} from "./widget/index";
+import React, { Component } from "react";
+import { FlatList, View, Text, RefreshControl } from "react-native";
+import { Icon } from "native-base";
+import { alertMe } from "./utils";
+import { CandidateItem, LoadMore } from "./widget/index";
 import config from "../config.json";
 
-export default class PersonList extends Component {
+export class PersonScreen extends Component {
+
+    static navigationOptions = {
+        tabBarLabel: '找人',
+        tabBarIcon: ({ focused, tintColor }) => (
+          <Icon name="navigate" style={{color: tintColor}}/>
+        ),
+    };
 
     constructor(props) {
         super(props);
@@ -67,7 +75,7 @@ export default class PersonList extends Component {
 
     render() {
         return (
-            <View style={{flex: 1}}>
+            <View style={{flex: 1, backgroundColor: 'white', paddingTop: 5 }}>
                 <FlatList
                     data={this.state.data}
                     renderItem={this._renderItem}

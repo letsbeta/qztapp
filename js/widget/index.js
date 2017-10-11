@@ -171,21 +171,21 @@ export class CandidateItem extends Component {
 
     render() {
         return (
-            <ListItem avatar style={{marginLeft: 3}}>
-                <Left>
+            <ListItem style={{marginLeft: 3, marginBottom: 10}}>
+                <Left style={{flex: 0}}>
                     <Thumbnail source={{uri: this.props.avatar}}/>
                 </Left>
 
                 {/*用户姓名简介*/}
-                <Body>
-                <TouchableOpacity onPress={this.props.onPress}>
-                    <Text>{this.props.name}</Text>
-                    <Text style={{fontSize: 13, paddingTop: 5, color: "gray"}}>{this.props.desc}</Text>
-                </TouchableOpacity>
+                <Body style={{marginLeft: 10}}>
+                    <TouchableOpacity onPress={this.props.onPress}>
+                        <Text>{this.props.name}</Text>
+                        <Text style={{fontSize: 13, paddingTop: 5, color: "gray"}}>{this.props.desc}</Text>
+                    </TouchableOpacity>
                 </Body>
 
                 {/*更新时间*/}
-                <Right>
+                <Right style={{flex: 0, alignSelf: "stretch"}}>
                     <Text style={{fontSize: 10, color: "gray"}}>{this.props.updated_at}</Text>
                 </Right>
             </ListItem>
@@ -330,14 +330,14 @@ export class ServiceItem extends Component {
 
     render() {
         return (
-            <ListItem icon style={{marginLeft: 0}}>
+            <ListItem icon style={{marginLeft: 0, marginBottom: 5, paddingLeft: 5}}>
                 <Left>
                     <Image style={{width: 40, height: 40}}
                            source={{uri: this.props.icon}}/>
                 </Left>
                 <Body>
                 <TouchableOpacity onPress={this.props.onPress}>
-                    <Text>企业入住</Text>
+                    <Text>{this.props.name}</Text>
                 </TouchableOpacity>
                 </Body>
                 <Right>
